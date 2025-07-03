@@ -2,9 +2,11 @@ const express = require('express')
 
 const app = express()
 
+app.use(express.json())
 
-app.get('/home',(req, res)=>{
-    res.send('chuttt')
+app.post('/home',(req, res)=>{
+    console.log(req.body);
+    res.send('o yeah')
 })
 
 app.listen(3000,()=>{
