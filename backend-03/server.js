@@ -1,15 +1,34 @@
-const express = require('express')
+const express = require("express");
 
-const app = express()
+const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-app.post('/home',(req, res)=>{
-    console.log(req.body);
-    res.send('o yeah')
-})
+const notes = [];
 
-app.listen(3000,()=>{
-    console.log("chal gaya");
-    
-})
+app.post("/home", (req, res) => {
+  console.log(req.body);
+  notes.push(req.body);
+  res.send("notes added");
+});
+
+app.get("/home", (req, res) => {
+  res.json(notes);
+});
+
+app.delete("/home/:index", (req, res) => {
+  let index = req.params.index;
+  delete notes[index];
+  res.send("deleted");
+});
+
+app.patch("/home/:index",(req, res) => {
+  const index = req.params.index;
+  const { target } = req.body;
+  notes[index].target = target;
+  res.send("hogaya");
+
+});
+app.listen(3000, () => {
+  console.log("server running on 3000 port");
+});
