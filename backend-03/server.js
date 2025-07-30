@@ -1,34 +1,36 @@
 const express = require("express");
 
+const connectToDB = require("./src/db/db");
 const app = express();
 
-app.use(express.json());
+connectToDB()
+// app.use(express.json());
 
-const notes = [];
+// const notes = [];
 
-app.post("/home", (req, res) => {
-  console.log(req.body);
-  notes.push(req.body);
-  res.send("notes added");
-});
+// app.post("/home", (req, res) => {
+//   console.log(req.body);
+//   notes.push(req.body);
+//   res.send("notes added");
+// });
 
-app.get("/home", (req, res) => {
-  res.json(notes);
-});
+// app.get("/home", (req, res) => {
+//   res.json(notes);
+// });
 
-app.delete("/home/:index", (req, res) => {
-  let index = req.params.index;
-  delete notes[index];
-  res.send("deleted");
-});
+// app.delete("/home/:index", (req, res) => {
+//   let index = req.params.index;
+//   delete notes[index];
+//   res.send("deleted");
+// });
 
-app.patch("/home/:index",(req, res) => {
-  const index = req.params.index;
-  const { target } = req.body;
-  notes[index].target = target;
-  res.send("hogaya");
+// app.patch("/home/:index",(req, res) => {
+//   const index = req.params.index;
+//   const { target } = req.body;
+//   notes[index].target = target;
+//   res.send("hogaya");
 
-});
+// });
 app.listen(3000, () => {
   console.log("server running on 3000 port");
 });

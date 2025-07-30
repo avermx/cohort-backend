@@ -8,17 +8,17 @@
 //     console.log('server gand mein daal le');
     
 // })
-const express = require('express')
+// const express = require('express')
 
 
-const app = express()
+// const app = express()
 
 
-app.get('/home',(req,res)=>{
-    res.send('helloo jI')
+// app.get('/home',(req,res)=>{
+//     res.send('helloo jI')
     
-})
-app.listen(3000,()=>{
-    console.log('hekkk');
+// })
+// app.listen(3000,()=>{
+//     console.log('hekkk');
     
-})
+// })
