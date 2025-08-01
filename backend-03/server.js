@@ -1,9 +1,22 @@
 const express = require("express");
 
 const connectToDB = require("./src/db/db");
+const noteModel = require("./src/models/note.model");
 const app = express();
 
+app.use(express.json())
 connectToDB()
+
+
+app.post('/notes',async (req,res)=>{
+  const {title, content} = req.body
+  console.log(title,content);
+  await noteModel.create({
+    title,content
+  })
+  
+  res.json("Note Successfully Created")
+})
 // app.use(express.json());
 
 // const notes = [];
